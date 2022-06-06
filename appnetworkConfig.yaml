@@ -22,7 +22,7 @@ certificateAuthorities:
         y4kqb3EtkM+fYj+7bhsjV+wq++ESyjvREXTl/bQCIQCw6lkVjv0jFIMJZKunjn05
         125Ftb9a54+lKfzKJcNx6Q==
         -----END CERTIFICATE-----
-    url: https://172.19.1.199:30258
+    url: https://ord-ca.fabric:7054
   org1-ca.fabric:
     caName: ca
     registrar:
@@ -46,7 +46,7 @@ certificateAuthorities:
         ExReijuv0n5xJieaP3jm2LkOWVg8j0KPFRFg4NECIQCFlGOwQ+//jhDJ4dJKF5ny
         gkFRBIQHjAOYYq+Csci3iQ==
         -----END CERTIFICATE-----
-    url: https://172.19.1.199:30024
+    url: https://org1-ca.fabric:7054
   org2-ca.fabric:
     caName: ca
     registrar:
@@ -70,7 +70,7 @@ certificateAuthorities:
         rH6ozNzeeJA/Ymk0yH3OmfGyIqVxxwBxbYK1I75lAiAnZagQ9SCRREcWKalmRUzB
         o0VaWHOy7QTENGPcKR1mPQ==
         -----END CERTIFICATE-----
-    url: https://172.19.1.199:32037
+    url: https://org2-ca.fabric:7054
   org3-ca.fabric:
     caName: ca
     registrar:
@@ -94,11 +94,10 @@ certificateAuthorities:
         w1JOoM3VhoGUZ6CP45ujA1u638Ilo1HiAeMws+RKAiEA9BfwHw5paDZI5NxJI7ri
         wyf0K5Vz7Y19WjnPb8EXHKU=
         -----END CERTIFICATE-----
-    url: https://172.19.1.199:31014
+    url: https://org3-ca.fabric:7054
 channels:
   _default:
-    orderers:
-    - ord-node1.fabric
+    orderers: []
     peers:
       org1-peer1.fabric:
         chaincodeQuery: true
@@ -139,36 +138,8 @@ channels:
 client:
   organization: <no value>
 name: hlf-network
-orderers:
-  ord-node1.fabric:
-    grpcOptions:
-      allow-insecure: false
-    tlsCACerts:
-      pem: |
-        -----BEGIN CERTIFICATE-----
-        MIICRDCCAeugAwIBAgIQT7DK288osGdfauWWR7g5+DAKBggqhkjOPQQDAjBtMQsw
-        CQYDVQQGEwJFUzERMA8GA1UEBxMIQWxpY2FudGUxETAPBgNVBAkTCEFsaWNhbnRl
-        MRkwFwYDVQQKExBLdW5nIEZ1IFNvZnR3YXJlMQ0wCwYDVQQLEwRUZWNoMQ4wDAYD
-        VQQDEwV0bHNjYTAeFw0yMjA1MjkxMzMxMTNaFw0zMjA1MzAxMzMxMTNaMG0xCzAJ
-        BgNVBAYTAkVTMREwDwYDVQQHEwhBbGljYW50ZTERMA8GA1UECRMIQWxpY2FudGUx
-        GTAXBgNVBAoTEEt1bmcgRnUgU29mdHdhcmUxDTALBgNVBAsTBFRlY2gxDjAMBgNV
-        BAMTBXRsc2NhMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEybyhD2VdSSdFjG/c
-        XSkVGevsX4e6/jz8RYgSNap4dxjOpqh7MjzxvL5JFdv4lM4/5h/Fx/M2ODwDCd2F
-        QjjcPKNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggr
-        BgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCDShYPF5tip1GIsdTVY
-        uaAfEcbvrUFYfdUQafwbtPS5dzAKBggqhkjOPQQDAgNHADBEAiBqrgi6tMfBvdmr
-        tZ9UcjX9RU5Dk6tvp4DaBps9VVo0tQIgU8TDF0sqi0g9c1gpDrUPGjN4QW4labD1
-        c766iL2r+aw=
-        -----END CERTIFICATE-----
-    url: grpcs://172.19.1.199:30878
+orderers: []
 organizations:
-  OrdererMSP:
-    cryptoPath: /tmp/cryptopath
-    mspid: OrdererMSP
-    orderers:
-    - ord-node1.fabric
-    peers: []
-    users: {}
   Org1MSP:
     cryptoPath: /tmp/cryptopath
     mspid: Org1MSP
@@ -291,7 +262,7 @@ peers:
         Fi1Vvp1fk1lN+40h0LErga8woLrAuVsCIQCttU5WxGXv2eXwYBjy+sXtDs1iWZuO
         80MH4TV1bonGGg==
         -----END CERTIFICATE-----
-    url: grpcs://172.19.1.199:31203
+    url: grpcs://org1-peer1.fabric:7051
   org1-peer2.fabric:
     grpcOptions:
       allow-insecure: false
@@ -314,7 +285,7 @@ peers:
         Fi1Vvp1fk1lN+40h0LErga8woLrAuVsCIQCttU5WxGXv2eXwYBjy+sXtDs1iWZuO
         80MH4TV1bonGGg==
         -----END CERTIFICATE-----
-    url: grpcs://172.19.1.199:31834
+    url: grpcs://org1-peer2.fabric:7051
   org2-peer1.fabric:
     grpcOptions:
       allow-insecure: false
@@ -337,7 +308,7 @@ peers:
         Lw3kYz6Z3C4cl+Y5JHPvsh7wpsqLuAfwAiEA733AQ7PTRL2P0Wyiy7w1u0/RDBhZ
         zCYmltWA9Y7v0Yg=
         -----END CERTIFICATE-----
-    url: grpcs://172.19.1.199:32006
+    url: grpcs://org2-peer1.fabric:7051
   org2-peer2.fabric:
     grpcOptions:
       allow-insecure: false
@@ -360,7 +331,7 @@ peers:
         Lw3kYz6Z3C4cl+Y5JHPvsh7wpsqLuAfwAiEA733AQ7PTRL2P0Wyiy7w1u0/RDBhZ
         zCYmltWA9Y7v0Yg=
         -----END CERTIFICATE-----
-    url: grpcs://172.19.1.199:31654
+    url: grpcs://org2-peer2.fabric:7051
   org3-peer1.fabric:
     grpcOptions:
       allow-insecure: false
@@ -383,7 +354,7 @@ peers:
         JRJhWnQN357mFaRDw024bzv0RcaNbiYCIGaqD8j5thfM/cH2oVdGB1V8EAGi6jOO
         bkYlbYeyi5O4
         -----END CERTIFICATE-----
-    url: grpcs://172.19.1.199:31930
+    url: grpcs://org3-peer1.fabric:7051
   org3-peer2.fabric:
     grpcOptions:
       allow-insecure: false
@@ -406,5 +377,5 @@ peers:
         JRJhWnQN357mFaRDw024bzv0RcaNbiYCIGaqD8j5thfM/cH2oVdGB1V8EAGi6jOO
         bkYlbYeyi5O4
         -----END CERTIFICATE-----
-    url: grpcs://172.19.1.199:30957
+    url: grpcs://org3-peer2.fabric:7051
 version: 1.0.0
