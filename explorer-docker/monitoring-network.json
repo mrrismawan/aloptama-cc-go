@@ -1,0 +1,95 @@
+{
+	"name": "test-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "exploreradmin",
+			"password": "exploreradminpw"
+		},
+		"enableAuthentication": true,
+		"organization": "Org1MSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"mychannel": {
+			"peers": {
+				"org1-peer1.fabric": {},
+				"org1-peer2.fabric": {}
+			}
+		}
+	},
+	"organizations": {
+		"Org1MSP": {
+			"mspid": "Org1MSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/Org1MSP/users/"
+			},
+			"peers": [
+				"org1-peer1.fabric",
+				"org1-peer2.fabric"
+			],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/org1.example.com/users/"
+			}
+		},
+		"Org2MSP" : {
+			"mspid": "Org2MSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/Org2MSP/users/"
+			},
+			"peers": [
+				"org2-peer1.fabric",
+				"org2-peer2.fabric"
+			],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/Org2MSP/users/"
+			}
+		},
+		"Org3MSP" : {
+			"mspid": "Org3MSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/Org3MSP/users/"
+			},
+			"peers": [
+				"org3-peer1.fabric",
+				"org3-peer2.fabric"
+			],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/Org3MSP/users/"
+			}
+		}
+	},
+	"peers": {
+		"org1-peer1.fabric": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/Org1MSP/tlscacerts/tlsca.pem"
+			},
+			"url": "grpcs://172.19.1.199:31203"
+		},
+		"org2-peer1.fabric": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/Org2MSP/tlscacerts/tlsca.pem"
+			},
+			"url": "grpcs://172.19.1.199:32006"
+		},
+		"org3-peer1.fabric": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/Org3MSP/tlscacerts/tlsca.pem"
+			},
+			"url": "grpcs://172.19.1.199:31930"
+		}
+	},
+	"orderers": {
+		"ord-node1.fabric": {
+			"url": "grpcs://172.19.1.199:30878"
+		}
+	}
+}

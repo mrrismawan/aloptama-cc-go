@@ -1,0 +1,9 @@
+{
+	"network-configs": {
+		"monitoring-alat-network": {
+			"name": "Monitoring Alat Network",
+			"profile": "./monitoring-network.json"
+		}
+	},
+	"license": "Apache-2.0"
+}

@@ -1,0 +1,128 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: explorer-config
+data:
+  network.json: |-
+      {
+      "name": "first-network",
+      "version": "1.0.0",
+      "client": {
+        "tlsEnable": true,
+        "adminCredential": {
+          "id": "exploreradmin",
+          "password": "exploreradminpw"
+        },
+        "enableAuthentication": false,
+        "organization": "Org1MSP",
+        "connection": {
+          "timeout": {
+            "peer": {
+              "endorser": "300"
+            },
+            "orderer": "300"
+          }
+        }
+      },
+      "channels": {
+        "mychannel": {
+          "peers": {
+            "peer0-org1": {}
+          },
+          "connection": {
+            "timeout": {
+              "peer": {
+                "endorser": "6000",
+                "eventHub": "6000",
+                "eventReg": "6000"
+              }
+            }
+          }
+        }
+      },
+      "organizations": {
+        "Org1MSP": {
+          "mspid": "Org1MSP",
+          "adminPrivateKey": {
+          -----BEGIN PRIVATE KEY-----
+          MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgOxMv54DPiN+apGYx
+          W9gFvtOVIGC57HEL97DqH+1IjS2hRANCAATh9lcZFPCfH/hPVbDo27zhXg0o9nCl
+          hIwDkhUyaRFVf5vHWQ11Z55ZYDL4gXk3RGYSxFV/+ZmBQBN2ju0ob5DI
+          -----END PRIVATE KEY-----
+          },
+          "peers": [
+            "org2-peer1.fabric"
+            "org2-peer2.fabric"
+          ],
+          "signedCert": {
+          "-----BEGIN CERTIFICATE-----
+          MIICUjCCAfmgAwIBAgIUKfC3NwHdSfcOuOJabtVDO4tag7swCgYIKoZIzj0EAwIw
+          ajELMAkGA1UEBhMCRVMxETAPBgNVBAcTCEFsaWNhbnRlMREwDwYDVQQJEwhBbGlj
+          YW50ZTEZMBcGA1UEChMQS3VuZyBGdSBTb2Z0d2FyZTENMAsGA1UECxMEVGVjaDEL
+          MAkGA1UEAxMCY2EwHhcNMjIwNTMxMTIxMjAwWhcNMjMwNTMxMTIxNzAwWjAgMQ4w
+          DAYDVQQLEwVhZG1pbjEOMAwGA1UEAxMFYWRtaW4wWTATBgcqhkjOPQIBBggqhkjO
+          PQMBBwNCAATh9lcZFPCfH/hPVbDo27zhXg0o9nClhIwDkhUyaRFVf5vHWQ11Z55Z
+          YDL4gXk3RGYSxFV/+ZmBQBN2ju0ob5DIo4HGMIHDMA4GA1UdDwEB/wQEAwIHgDAM
+          BgNVHRMBAf8EAjAAMB0GA1UdDgQWBBT78U6wXIHDXVOITuCtls+tlyeczTArBgNV
+          HSMEJDAigCDwRlotH/uD+Um5vzmFUf0LgcRQ084nj+h4SwS6f13/STBXBggqAwQF
+          BgcIAQRLeyJhdHRycyI6eyJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVucm9sbG1l
+          bnRJRCI6ImFkbWluIiwiaGYuVHlwZSI6ImFkbWluIn19MAoGCCqGSM49BAMCA0cA
+          MEQCIE4733yVo/OUNe28RnFYRgbWjqiiVkLTPCA3Gg9ohXx1AiAi+HY2E2ZDgP/x
+          pjSPq5yUfydH79r2nWFd6V0++7VgJQ==
+          -----END CERTIFICATE-----"
+          }
+        }
+      },
+      "peers": {
+        "org2-peer1.fabric": {
+          "tlsCACerts": {
+          "-----BEGIN CERTIFICATE-----
+          MIICRzCCAeygAwIBAgIRAOmlhy9up3fCL7ADdp5j21AwCgYIKoZIzj0EAwIwbTEL
+          MAkGA1UEBhMCRVMxETAPBgNVBAcTCEFsaWNhbnRlMREwDwYDVQQJEwhBbGljYW50
+          ZTEZMBcGA1UEChMQS3VuZyBGdSBTb2Z0d2FyZTENMAsGA1UECxMEVGVjaDEOMAwG
+          A1UEAxMFdGxzY2EwHhcNMjIwNTI5MTMzMDI3WhcNMzIwNTMwMTMzMDI3WjBtMQsw
+          CQYDVQQGEwJFUzERMA8GA1UEBxMIQWxpY2FudGUxETAPBgNVBAkTCEFsaWNhbnRl
+          MRkwFwYDVQQKExBLdW5nIEZ1IFNvZnR3YXJlMQ0wCwYDVQQLEwRUZWNoMQ4wDAYD
+          VQQDEwV0bHNjYTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKoZ1jJlCemSwy3/
+          3IWcHSSc2+IWuVoPSnKEmqntNwiWHsWbJS50u/ESvKz0a7mhtrM7JrqvvY3DNbpK
+          fR1FDB2jbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAgYI
+          KwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgkPkJLU8t3dL6Tax8
+          FFDGA8mJHOcudt07AKS5kdt0khEwCgYIKoZIzj0EAwIDSQAwRgIhALzloE3OTaqk
+          Lw3kYz6Z3C4cl+Y5JHPvsh7wpsqLuAfwAiEA733AQ7PTRL2P0Wyiy7w1u0/RDBhZ
+          zCYmltWA9Y7v0Yg=
+          -----END CERTIFICATE-----"
+          },
+          "url": "grpcs://172.19.1.199:31203"
+        }
+        "org2-peer2.fabric": 
+        "tlsCACerts": {
+        "-----BEGIN CERTIFICATE-----
+        MIICRjCCAeugAwIBAgIQPWk2gURHzUQL4QNEvNCDRjAKBggqhkjOPQQDAjBtMQsw
+        CQYDVQQGEwJFUzERMA8GA1UEBxMIQWxpY2FudGUxETAPBgNVBAkTCEFsaWNhbnRl
+        MRkwFwYDVQQKExBLdW5nIEZ1IFNvZnR3YXJlMQ0wCwYDVQQLEwRUZWNoMQ4wDAYD
+        VQQDEwV0bHNjYTAeFw0yMjA1MjkxMzI4MDNaFw0zMjA1MzAxMzI4MDNaMG0xCzAJ
+        BgNVBAYTAkVTMREwDwYDVQQHEwhBbGljYW50ZTERMA8GA1UECRMIQWxpY2FudGUx
+        GTAXBgNVBAoTEEt1bmcgRnUgU29mdHdhcmUxDTALBgNVBAsTBFRlY2gxDjAMBgNV
+        BAMTBXRsc2NhMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE+RyT1Ylm0WzXtuD1
+        6aYlLmTjcaPRlPCa1ODR/1WQW+ibTGnc/ngEDyRYI9qIuGybXM3fgLPc1l+WSqXs
+        xeYVN6NtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggr
+        BgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCAbX2xsSS2SpA/OhO2t
+        1f51RTVGW6ov+sHpHzpufzg6EDAKBggqhkjOPQQDAgNJADBGAiEAhDUipQ4CCpU4
+        Fi1Vvp1fk1lN+40h0LErga8woLrAuVsCIQCttU5WxGXv2eXwYBjy+sXtDs1iWZuO
+        80MH4TV1bonGGg==
+        -----END CERTIFICATE-----"
+        },
+        "url": "grpcs://172.19.1.199:31834"
+      }
+      }
+
+  config.json: |- 
+      {
+      "network-configs": {
+        "first-network": {
+          "name": "first-network",
+          "profile": "./first-network.json"
+        }
+      },
+      "license": "Apache-2.0"
+      }
